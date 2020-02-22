@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/register_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <center><h2><i class="fa fa-user-plus" style="font-size:32px"></i>  Client Registration</h2></center>
+
+    <form action="/register" method="POST">
+      <div class="container">
+        <p><b>Please select one of the following choices:</b></p>
+              
+        <input type="radio" name="personType" value="c" required> Client
+        <input type="radio" name="personType" value="l" required> Lawyer<br><br><br>
+        
+        <label for="fname"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="fname" required>
+        
+        <label for="mname"><b>Middle Name</b></label>
+        <input type="text" placeholder="Enter Middle Name" name="mname">
+      
+        <label for="lname"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="lname" required>
+        
+        <label for="email"><b>e-mail</b></label>
+        <input type="email" placeholder="Enter Email" name="email" required>
+        <br>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+        
+        <label for="password2"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="password2" required>
+            
+        <button type="submit" class="button">Register</button>
+        
+      </div>
+    </form>
+    <form action="/" method="GET">
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="submit" class="cancelbtn">Back</button>
+      </div>
+    </form>
+  </ body>
+</html>

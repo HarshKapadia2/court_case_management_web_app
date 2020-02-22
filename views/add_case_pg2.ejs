@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" href="/css/add_case_pg2_style.css">
+
+<form action="/add_case_pg2" method="POST">
+    <section class="container">
+        <div id="main">
+            <h1><strong>Please Select a Lawyer</strong></h1>
+            <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Lawyer's name</th>
+                            <th>Age</th>
+                            <th>No. of case worked</th>
+                            <th>Description</th>
+                            <th>Price per hour</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tbl-content">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                        <% items.forEach(function(item){
+                                   if(item.type == 'l') { %>     
+                        <tr>
+                            <td>
+                                <label><input type="radio" name="lawyer_id" value=<% item.id %> required></label>
+                            </td>
+                            <td><%= item.f_name %> </td>
+                            <td>age</td>
+                            <td>no of cases..</td>
+                            <td>this is the lawyers experience</td>
+                            <td>this will be his payment criteria</td>
+                           
+                            <td><a href="/html/view_lawyer.html">View more</a></td>
+                        </tr>
+                        <%  } }); %>
+                      
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="center">
+                <button><strong>Proceed</strong></button>
+                 </div>
+        </div>
+    </section>
+</form>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" rel="stylesheet" href="/css/login_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <center><h1><i class="fa fa-user-circle-o" style="font-size:36px"></i>  Login</h1></center>
+
+    <form action="/login" method="POST">
+      <center>
+        <div class="container">
+          <p><b>Please select one of the following choices:</b></p>
+          <input type="radio" name="personType" value="c" required> Client
+          <input type="radio" name="personType" value="l" required> Lawyer
+          <br><br><br>
+
+          <label for="email" class="pad"><b>e-mail:</b></label>
+          <br>
+          <input class="pratik" type="email" placeholder="Enter Email" name="email" required>
+          <br>
+
+          <label for="password" class="passwordpad"><b>Password:</b></label>
+          <br>
+          <input class="pratik" type="password" placeholder="Enter Password" name="password" required>
+          <br>
+              
+          <button type="submit">Login</button>
+        </div>
+      </center>
+    </form>
+
+    <form action="/" method="GET">
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="submit" class="backbtn">Back</button>
+      </div>
+    </form>
+  </body>
+</html>

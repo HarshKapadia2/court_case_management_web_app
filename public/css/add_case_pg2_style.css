@@ -1,0 +1,89 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+
+
+body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
+  color: #777;
+  background: #381212;
+}
+
+.container {
+  max-width: 1000;
+  width: 100%;
+  margin: 60 auto;
+  position: relative;
+}
+
+#main {
+  padding: 25px;
+  background-color: #F9F9F9;
+}
+
+h1{
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+table{
+  width:100%;
+  table-layout: fixed;
+}
+th{
+  border: 0.1px solid #F9F9F9;
+  border-bottom: none;
+  background-color: #d9a379;
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: #4a3523;
+}
+td{
+  border: 0.2px solid #d9a379;
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #777;
+}
+td:first-child, th:first-child {
+ border-left: none;
+}
+th:first-child, th:last-child{
+  background-color: #F9F9F9;
+}
+td:last-child, th:last-child {
+ border-right: none;
+}
+tr.lastrow
+{
+   border-bottom: none;
+}
+
+ button {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 30 auto 5 auto;
+  padding: 10px;
+  font-size: 15px;
+}
+
+ button:hover {
+  background: #43A047;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+.center
+{margin: auto;
+  width: 50%;
+  padding: 10px;
+}

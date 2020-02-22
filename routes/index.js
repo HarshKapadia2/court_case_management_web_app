@@ -12,7 +12,7 @@ router.get
     '/',
     (req, res) =>
     {
-        res.render('homepage');
+        res.render('home_page');
     }
 );
 
@@ -30,7 +30,7 @@ router.post
     '/login',
     (req, res, next) =>
     {
-        if(req.body.personType == c) //client
+        if(req.body.personType == 'c') //client
         {
             passport.authenticate
             (

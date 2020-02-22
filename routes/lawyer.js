@@ -12,3 +12,6 @@ router.get
         res.render('client_dashboard');
     }
 );
+
+
+module.exports = router;

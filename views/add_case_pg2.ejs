@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="/css/add_case_pg2_style.css">
 
-<form action="/add_case_pg2" method="POST">
+<form action="/client/add_case_pg2" method="POST">
     <section class="container">
         <div id="main">
             <h1><strong>Please Select a Lawyer</strong></h1>
@@ -22,28 +22,33 @@
             <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0">
                     <tbody>
-                        <% items.forEach(function(item){
-                                   if(item.type == 'l') { %>     
-                        <tr>
-                            <td>
-                                <label><input type="radio" name="lawyer_id" value=<% item.id %> required></label>
-                            </td>
-                            <td><%= item.f_name %> </td>
-                            <td>age</td>
-                            <td>no of cases..</td>
-                            <td>this is the lawyers experience</td>
-                            <td>this will be his payment criteria</td>
-                           
-                            <td><a href="/html/view_lawyer.html">View more</a></td>
-                        </tr>
-                        <%  } }); %>
+                        <% lawyers.forEach
+                        (
+                            (lawyer) => 
+                            { 
+                                const lawyer_id = '"' + `${lawyer._id}` + '"';
+                                console.log(lawyer_id); %>
+                                <tr>
+                                    <td>
+                                        <label><input required type="radio" name="lawyer_id" value=<% lawyer_id %>></label>
+                                    </td>
+                                    <td><%= lawyer.fname %> </td>
+                                    <td>age</td>
+                                    <td>no of cases..</td>
+                                    <td>this is the lawyers experience</td>
+                                    <td>this will be his payment criteria</td>
+                                
+                                    <td><a href="/html/view_lawyer.html">View more</a></td>
+                                </tr>
+                            <% }
+                        ); %>
                       
 
                     </tbody>
                 </table>
             </div>
             <div class="center">
-                <button><strong>Proceed</strong></button>
+                <button type="submit"><strong>Proceed</strong></button>
                  </div>
         </div>
     </section>

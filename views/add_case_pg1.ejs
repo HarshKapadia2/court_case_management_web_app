@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="/css/add_case_pg1_style.css">
 <div class="container">  
-  <form id="addcase" action="/add_case_pg1" method="POST">
+  <form id="addcase" action="/client/add_case_pg1" method="POST">
     <h3>Add a case form</h3>
     <h4>Please fill up the following details to add a case</h4>
     <fieldset>
@@ -9,7 +9,7 @@
       <input placeholder="Give the case a short name" name="case_name" type="text" required autofocus>
     </fieldset>
     <fieldset>
-      Select the type of case<span class="required">*</span>
+      Select the type of case
       <select type="case_type" name="case_type">
         <option value="Criminal">Criminal</option>
         <option value="Civil">Civil</option>
@@ -28,7 +28,7 @@
       <button name="submit" type="submit" id="addcase-submit">Proceed</button>
     </fieldset>
   </form>
-  <form id="addcase" action="/client_dashboard" method="GET">
+  <form id="addcase" action="/client/dashboard" method="GET">
     <fieldset>
       <button type="submit">Back</button>
     </fieldset>

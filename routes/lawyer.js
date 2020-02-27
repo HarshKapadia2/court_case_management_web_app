@@ -9,7 +9,7 @@ router.get
     ensureAuthenticated,
     (req, res) =>
     {
-        res.render('client_dashboard');
+        res.render('lawyer_dashboard', {f_name: req.user.fname});
     }
 );
 

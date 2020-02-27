@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const CourtCaseSchema = new mongoose.Schema
+const CaseDetailsSchema = new mongoose.Schema
 (
     {
         client_id: {
@@ -44,6 +44,6 @@ const CourtCaseSchema = new mongoose.Schema
 );
 
 
-const CourtCase = mongoose.model('CourtCase', CourtCaseSchema);
+const CaseDetails = mongoose.model('CaseDetails', CaseDetailsSchema);
 
-module.exports = CourtCase;
+module.exports = CaseDetails;

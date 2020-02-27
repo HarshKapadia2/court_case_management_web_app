@@ -89,7 +89,7 @@ router.post
 
         let errors = [];
         //check required fields
-        if(!personType || !fname || !mname || !lname || !email || !password || !password2)
+        if(!personType || !fname || !lname || !email || !password || !password2)
             errors.push({message: 'Please fill in all the fields...'});
         //check whether passwords match
         if(password !== password2)

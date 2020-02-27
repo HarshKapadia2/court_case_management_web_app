@@ -12,8 +12,7 @@ const UserSchema = new mongoose.Schema
             required: true
         },
         mname: {
-            type: String,
-            required: true
+            type: String
         },
         lname: {
             type: String,

@@ -93,8 +93,6 @@ router.post
     notIfLoggedIn,
     (req, res) =>
     {
-        console.log(req.body);
-        
         const {personType, fname, mname, lname, email, password, password2} = req.body;
 
         let errors = [];
@@ -167,8 +165,6 @@ router.post
                                 password
                             }
                         );
-
-                        console.log(new_user);
 
                         //hash password
                         bcrypt.genSalt

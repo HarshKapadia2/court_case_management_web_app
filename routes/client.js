@@ -24,7 +24,6 @@ router.get
         (
             (cases) =>
             {
-                console.log(cases);
                 res.render('client_dashboard', {f_name: req.user.fname, cases});
             }
         ).catch
@@ -51,8 +50,6 @@ router.post
     ensureAuthenticated,
     (req, res) =>
     {
-        console.log(req.body);
-
         const new_case_details = new CaseDetails
         (
             {
@@ -62,8 +59,6 @@ router.post
                 case_descp: req.body.case_descp
             }
         );
-
-        console.log(new_case_details);
 
         new_case_details.save().then
         (
@@ -95,7 +90,6 @@ router.get
         (
             (lawyers) =>
             {
-                console.log(lawyers);
                 res.render('add_case_pg2', {lawyers});
             }
         ).catch

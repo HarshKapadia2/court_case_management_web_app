@@ -1,83 +1,117 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+            integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="/css/dashboard_style.css">
+    </head>
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="/css/dashboard_style.css">
-</head>
+    <body class="home">
+        <h1><i class="fa fa-dashboard" style="font-size:48px;color:black"></i>
+            <b><%= f_name %>'s Dashboard</b></h1>
+        <div class="container-fluid display-table">
+            <div class="row display-table-row">
+                <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                    <div class="logo">
+                    </div>
+                    <div class="navi">
+                        <ul>
 
-<body class="home">
-    <h1><i class="fa fa-dashboard" style="font-size:48px;color:black"></i>
-        <b><%= f_name %>'s Dashboard</b></h1>
-    <div class="container-fluid display-table">
-        <div class="row display-table-row">
-            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
-                <div class="logo">
+                            <!-- <li><a href="#"><i class="fa fa-home" style="font-size:20px" aria-hidden="true"></i><span
+                                        class="hidden-xs hidden-sm">Home</span></a></li>
+                            <li><a href="#"><i class="fa fa-plus" style="font-size:20px" aria-hidden="true"></i><span
+                                        class="hidden-xs hidden-sm">Add a case</span></a></li>
+                            <li><a href="#"><i class="fa fa-bell" style="font-size:20px" aria-hidden="true"></i><span
+                                        class="hidden-xs hidden-sm">Notifications</span></a></li>
+                            <li><a href="#"> <i class="fa fa-sign-out" style="font-size:20px" aria-hidden="true"></i><span
+                                        class="hidden-xs hidden-sm">Logout</span></a></li> -->
+
+                            <li><form action="/client/dashboard" method="GET"><button type="submit"><i class="fa fa-home" style="font-size:20px" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Dashboard</span></button></form></li>
+                            <li><form action="/client/add_case_pg1" method="GET"><button type="submit"><i class="fa fa-plus" style="font-size:20px" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add Case</span></button></form></li>
+                            <!-- <li><form action="/client_notification" method="GET"><button type="submit"><i class="fa fa-bell" style="font-size:20px" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Notifications</span></button></form></li> -->
+                            <li><form action="/logout" method="GET"><button type="submit"><i class="fa fa-sign-out" style="font-size:20px" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Log Out</span></button></form></li>
+
+                        </ul>
+                    </div>
                 </div>
-                <div class="navi">
-                    <ul>
 
-                        <!-- <li><a href="#"><i class="fa fa-home" style="font-size:20px" aria-hidden="true"></i><span
-                                    class="hidden-xs hidden-sm">Home</span></a></li>
-                        <li><a href="#"><i class="fa fa-plus" style="font-size:20px" aria-hidden="true"></i><span
-                                    class="hidden-xs hidden-sm">Add a case</span></a></li>
-                        <li><a href="#"><i class="fa fa-bell" style="font-size:20px" aria-hidden="true"></i><span
-                                    class="hidden-xs hidden-sm">Notifications</span></a></li>
-                        <li><a href="#"> <i class="fa fa-sign-out" style="font-size:20px" aria-hidden="true"></i><span
-                                    class="hidden-xs hidden-sm">Logout</span></a></li> -->
+                <%- include('./partials/messages.ejs') %>
 
-                        <li><form action="/client/dashboard" method="GET"><button type="submit"><i class="fa fa-home" style="font-size:20px" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Dashboard</span></button></form></li>
-                        <li><form action="/client/add_case_pg1" method="GET"><button type="submit"><i class="fa fa-plus" style="font-size:20px" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add Case</span></button></form></li>
-                        <!-- <li><form action="/client_notification" method="GET"><button type="submit"><i class="fa fa-bell" style="font-size:20px" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Notifications</span></button></form></li> -->
-                        <li><form action="/logout" method="GET"><button type="submit"><i class="fa fa-sign-out" style="font-size:20px" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Log Out</span></button></form></li>
-
-                    </ul>
-                </div>
-            </div>
-            <table>
                 <caption>
                     <div align="left" style="font-size:200%;"><b>Active Cases:</b></div>
                 </caption>
-                <tr style="width:100%">
-                    <th>Case Type</th>
-                    <th>Case Name</th>
-                    <th>Description</th>
-                    <th>Case No</th>
-                    <th>Hearing Date</th>
-                    <th>Descision Date</th>
-                </tr>
 
+                <table>
+                    <tr style="width:100%">
+                        <th>Case Type</th>
+                        <th>Case Name</th>
+                        <th>Description</th>
+                        <th>Case No</th>
+                        <th>Hearing Date</th>
+                        <th>Descision Date</th>
+                    </tr>
 
-
+                    <tbody>
+                        <% cases.forEach
+                        (
+                            (case1) => 
+                            { 
+                                if(case1.isResolved == 'N')
+                                { %>
+                                    <tr>
+                                        <td><%= case1.case_type %></td>
+                                        <td><%= case1.case_name %></td>
+                                        <td><%= case1.case_descp %></td>
+                                        <td>case no</td>
+                                        <td>hearing date</td>
+                                        <td>decision date</td>
+                                    </tr>
+                                <% }
+                            }
+                        ); %>
+                    </tbody>
+                </table>
+                <br>
                 
-
-
-
-
-            </table>
-            <br>
-            <table>
                 <caption>
                     <div align="left" style="font-size:200%;"><b>Resolved Cases:</b></div>
                 </caption>
-                <tr style="width:100%">
-                    <th>Case Type</th>
-                    <th>Case Name</th>
-                    <th>Description</th>
-                    <th>Case No</th>
-                    <th>Hearing Date</th>
-                    <th>Descision Date</th>
-                </tr>
-                
 
-
-            </table>
-
-</body>
-
+                <table>
+                    <tr style="width:100%">
+                        <th>Case Type</th>
+                        <th>Case Name</th>
+                        <th>Description</th>
+                        <th>Case No</th>
+                        <th>Hearing Date</th>
+                        <th>Descision Date</th>
+                    </tr>
+                    
+                    <tbody>
+                        <% cases.forEach
+                        (
+                            (case1) => 
+                            { 
+                                if(case1.isResolved == 'Y')
+                                { %>
+                                    <tr>
+                                        <td><%= case1.case_type %></td>
+                                        <td><%= case1.case_name %></td>
+                                        <td><%= case1.case_descp %></td>
+                                        <td>case no</td>
+                                        <td>hearing date</td>
+                                        <td>decision date</td>
+                                    </tr>
+                                <% }
+                            }
+                        ); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>

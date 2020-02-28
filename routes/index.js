@@ -3,6 +3,10 @@ const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 
+//include auth fns
+const {notIfLoggedIn} = require('../config/auth');
+const {ensureAuthenticated} = require('../config/auth');
+
 //'User' model
 const User = require('../models/User')
 
@@ -10,6 +14,7 @@ const User = require('../models/User')
 router.get
 (
     '/',
+    notIfLoggedIn,
     (req, res) =>
     {
         res.render('home_page');
@@ -20,6 +25,7 @@ router.get
 router.get
 (
     '/login',
+    notIfLoggedIn,
     (req, res) =>
     {
         res.render('login');
@@ -28,6 +34,7 @@ router.get
 router.post
 (
     '/login',
+    notIfLoggedIn,
     (req, res, next) =>
     {
         if(req.body.personType == 'c') //client
@@ -61,6 +68,7 @@ router.post
 router.get
 (
     '/logout',
+    ensureAuthenticated,
     (req, res) =>
     {
         req.logOut();
@@ -73,6 +81,7 @@ router.get
 router.get
 (
     '/register',
+    notIfLoggedIn,
     (req, res) =>
     {
         res.render('register');
@@ -81,6 +90,7 @@ router.get
 router.post
 (
     '/register',
+    notIfLoggedIn,
     (req, res) =>
     {
         console.log(req.body);

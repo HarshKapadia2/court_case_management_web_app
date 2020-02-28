@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+
+//include auth fn
 const {ensureAuthenticated} = require('../config/auth');
 
 const CaseDetails = require('../models/CaseDetails');
@@ -10,10 +12,27 @@ router.get
 (
     '/dashboard',
     ensureAuthenticated,
-    (req, res) =>
+    async (req, res) =>
     {
-        res.render('client_dashboard', {f_name: req.user.fname});
+        //const lawyers = CaseDetails.find
+        const cases = await CaseDetails.find
+        (
+            {
+                client_id: req.user.id
+            }
+        ).then
+        (
+            (cases) =>
+            {
+                console.log(cases);
+                res.render('client_dashboard', {f_name: req.user.fname, cases});
+            }
+        ).catch
+        (
+            (err) => console.log(err)
+        );        
     }
+
 );
 
 //add case pg 1
@@ -119,6 +138,15 @@ router.get
     (req, res) =>
     {
         res.render('add_case_pg3');
+    }
+);
+router.post
+(
+    '/add_case_pg3',
+    ensureAuthenticated,
+    (req, res) =>
+    {
+        res.redirect('/client/dashboard');
     }
 );
 

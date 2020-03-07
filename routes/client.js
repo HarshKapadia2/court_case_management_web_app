@@ -1,3 +1,4 @@
+const {ObjectId} = require('mongodb');
 const express = require('express');
 const router = express.Router();
 
@@ -14,11 +15,10 @@ router.get
     ensureAuthenticated,
     async (req, res) =>
     {
-        //const lawyers = CaseDetails.find
         const cases = await CaseDetails.find
         (
             {
-                client_id: req.user.id
+                client_id: ObjectId(req.user.id)
             }
         ).then
         (
@@ -31,7 +31,6 @@ router.get
             (err) => console.log(err)
         );        
     }
-
 );
 
 //add case pg 1
@@ -48,7 +47,7 @@ router.post
 (
     '/add_case_pg1',
     ensureAuthenticated,
-    (req, res) =>
+    async (req, res) =>
     {
         const new_case_details = new CaseDetails
         (
@@ -60,10 +59,11 @@ router.post
             }
         );
 
-        new_case_details.save().then
+        await new_case_details.save().then
         (
             (new_case_obj) =>
             {
+                req.flash('case_id', new_case_obj._id);
                 res.redirect('/client/add_case_pg2');
             }
         ).catch
@@ -80,7 +80,6 @@ router.get
     ensureAuthenticated,
     async (req, res) =>
     {
-        //const lawyers = CaseDetails.find
         const users = await User.find
         (
             {
@@ -102,16 +101,16 @@ router.post
 (
     '/add_case_pg2',
     ensureAuthenticated,
-    (req, res) =>
+    async (req, res) =>
     {
-        CaseDetails.updateOne
+        await CaseDetails.updateOne
         (
             {
-                client_id: req.user.id //you'll need to get the case id as well
+                _id: req.flash('case_id')[0]
             },
             {
                 $set: {
-                    lawyer_id: "5e566b5f2d661d1da065f98c"
+                    lawyer_id: ObjectId(req.body.lawyer_id)
                 }
             }
         ).then

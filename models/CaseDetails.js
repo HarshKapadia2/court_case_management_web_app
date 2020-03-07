@@ -4,11 +4,11 @@ const CaseDetailsSchema = new mongoose.Schema
 (
     {
         client_id: {
-            type: String,
+            type: Object(),
             required: true
         },
         lawyer_id: {
-            type: String
+            type: Object()
         },
         court_case_no: {
             type: String

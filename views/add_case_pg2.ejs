@@ -25,11 +25,10 @@
                         <% lawyers.forEach
                         (
                             (lawyer) => 
-                            { 
-                                const lawyer_id = '"' + `${lawyer._id}` + '"'; %>
+                            { %>
                                 <tr>
                                     <td>
-                                        <label><input required type="radio" name="lawyer_id" value=<% lawyer_id %>></label>
+                                        <label><input required type="radio" name="lawyer_id" value="<%= lawyer._id %>"></label>
                                     </td>
                                     <td><%= lawyer.fname %> </td>
                                     <td>age</td>
@@ -48,7 +47,7 @@
             </div>
             <div class="center">
                 <button type="submit"><strong>Proceed</strong></button>
-                 </div>
+            </div>
         </div>
     </section>
 </form>

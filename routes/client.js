@@ -5,6 +5,7 @@ const router = express.Router();
 //include auth fn
 const {ensureAuthenticated} = require('../config/auth');
 
+//include model
 const CaseDetails = require('../models/CaseDetails');
 const User = require('../models/User');
 
@@ -15,7 +16,7 @@ router.get
     ensureAuthenticated,
     async (req, res) =>
     {
-        const cases = await CaseDetails.find
+        await CaseDetails.find
         (
             {
                 client_id: ObjectId(req.user.id)
@@ -80,7 +81,7 @@ router.get
     ensureAuthenticated,
     async (req, res) =>
     {
-        const users = await User.find
+        await User.find
         (
             {
                 personType: 'l'
@@ -142,19 +143,6 @@ router.post
     ensureAuthenticated,
     async (req, res) =>
     {
-        // await CaseDetails.aggregate
-        // (
-        //     [
-        //         { 
-        //             "$addFields": {
-        //                 "h_date": {
-        //                     "$toDate": "$req.body.h_date"
-        //                 }   
-        //             } 
-        //         }
-        //     ]
-        // );
-        
         const case_id = req.flash('caseId')[0];
         const date = new Date(req.body.h_date);
         await CaseDetails.updateMany

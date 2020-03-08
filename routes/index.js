@@ -7,7 +7,7 @@ const router = express.Router();
 const {notIfLoggedIn} = require('../config/auth');
 const {ensureAuthenticated} = require('../config/auth');
 
-//'User' model
+//include model
 const User = require('../models/User')
 
 //home page

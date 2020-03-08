@@ -11,10 +11,7 @@ module.exports = {
     notIfLoggedIn: (req, res, next) =>
     {
         if(req.isAuthenticated())
-        {
-            req.flash('error_msg', 'Please log out to view this resource...');
-            return res.redirect('/client/dashboard');
-        }
+            return res.redirect('/logout');
         else
             return next();
     }

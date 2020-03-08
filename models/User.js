@@ -29,6 +29,10 @@ const UserSchema = new mongoose.Schema
         date: {
             type: Date,
             default: Date.now
+        },
+        is_profile_complete: {
+            type: String,
+            default: "N"
         }
     }
 );

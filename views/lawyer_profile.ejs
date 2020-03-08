@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/css/register_profile_style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <center><h2><i class="fa fa-user-plus" style="font-size:32px"> <%= f_name %>'s Details</i></h2></center>
+
+        <%- include('./partials/messages.ejs') %>
+
+        <form action="/lawyer/profile" method="POST">
+            <div class="container">
+                <label for="bar_id"><b>BAR Council ID <span style="color: red;">*</span></b></label>
+                <input type="text" placeholder="Enter your BAR Council ID" name="bar_id" required>
+
+                <label for="company_name"><b>Company Name <span style="color: red;">*</span></b></label>
+                <input type="text" placeholder="Enter Comapny name ('self' if self-employed)" name="company_name" required>
+
+                <label for="pref_case_types"><b>Preferred Case Types (Comma Separated) <span style="color: red;">*</span></b></label>
+                <input type="text" placeholder="Enter COMMA SEPARATED  preferred case types" name="pref_case_types" required>
+
+                <label for="exp_yrs"><b>No. of years of experience <span style="color: red;">*</span></b></label>
+                <input type="number" placeholder="Enter no. of yrs of experience as a lawyer" name="exp_yrs" required>
+                <br>
+
+                <label for="exp"><b>Experience <span style="color: red;">*</span></b></label>
+                <br>
+                <textarea placeholder="Enter your experience as a lawyer" name="exp" required></textarea>
+                <br>
+
+                <label for="fees"><b>Fees <span style="color: red;">*</span> Rs.</b></label>
+                <input type="number" placeholder="Enter your fees" name="fees" required>
+                <br>
+
+                <label for="fee_descp"><b>Fee structure <span style="color: red;">*</span></b></label>
+                <input type="text" placeholder="Enter your fee structure" name="fee_descp" required>
+
+                <label for="dob"><b>Date Of Birth</b></label>
+                <input type="date" placeholder="Enter your date of birth" name="dob">
+                <br>
+
+                <label for="age"><b>Age (in Years)</b></label>
+                <input type="number" placeholder="Enter your age" name="age">
+                <br>
+
+                <label for="ph_no"><b>Phone Number <span style="color: red;">*</span> (+91)(0)</b></label>
+                <input type="number" placeholder="Enter your 10 digit phone number" name="ph_no" required>
+
+                <button type="submit" class="button">Register Details</button>
+            </div>
+        </form>
+    </body>
+</html>

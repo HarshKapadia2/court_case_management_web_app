@@ -32,7 +32,7 @@ const CaseDetailsSchema = new mongoose.Schema
             type: String
         },
         h_date: {
-            true: Date
+            type: Date
         },
 
 

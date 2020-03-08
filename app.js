@@ -12,8 +12,9 @@ const app = express();
 require('./config/passport')(passport);
 
 //db config
-//const db = require('./config/keys').MongoURI;
-const db = 'mongodb://127.0.0.1:27017/court_case_management'
+const db = require('./config/keys').MongoURI; //for MongoDB Atlas
+//const db = 'mongodb://127.0.0.1:27017/court_case_management' //for local MongoDB
+
 //db connection
 mongoose.connect
 (
@@ -24,8 +25,8 @@ mongoose.connect
     }
 ).then
 (
-    //() => console.log('MongoDB Atlas connected...')
-    () => console.log('MongoDB Local connected...')
+    () => console.log('MongoDB Atlas connected...')
+    //() => console.log('MongoDB Local connected...')
 ).catch
 (
     (err) => console.log(err)

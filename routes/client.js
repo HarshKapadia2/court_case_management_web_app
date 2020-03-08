@@ -103,10 +103,13 @@ router.post
     ensureAuthenticated,
     async (req, res) =>
     {
+        const case_id = req.flash('case_id')[0]
+        req.flash('caseId', case_id);
+
         await CaseDetails.updateOne
         (
             {
-                _id: req.flash('case_id')[0]
+                _id: case_id
             },
             {
                 $set: {
@@ -137,9 +140,42 @@ router.post
 (
     '/add_case_pg3',
     ensureAuthenticated,
-    (req, res) =>
+    async (req, res) =>
     {
-        res.redirect('/client/dashboard');
+        // await CaseDetails.aggregate
+        // (
+        //     [
+        //         { 
+        //             "$addFields": {
+        //                 "h_date": {
+        //                     "$toDate": "$req.body.h_date"
+        //                 }   
+        //             } 
+        //         }
+        //     ]
+        // );
+        
+        const case_id = req.flash('caseId')[0];
+        const date = new Date(req.body.h_date);
+        await CaseDetails.updateMany
+        (
+            {
+                _id: case_id
+            },
+            {
+                $set: {
+                    court_type: req.body.court_type,
+                    court_case_no: req.body.court_case_no,
+                    h_date: date
+                }
+            }
+        ).then
+        (
+            res.redirect('/client/dashboard')
+        ).catch
+        (
+            (err) => console.log(err)
+        );
     }
 );
 

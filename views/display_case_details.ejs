@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/css/register_profile_style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <center><h2><i class="fa fa-user-plus" style="font-size:32px"> <%= case_name %>'s Details</i></h2></center>
+
+        
+
+        <form action="/client/dashboard" method="GET">
+            <div class="container">
+                <label><b>Case Name: </b></label>
+                <br>
+                <label><%= case_name %></label>
+                <br>
+
+                <label><b>Case Type: </b></label>
+                <br>
+                <label><%= case_type %></label>
+                <br>
+
+                <label><b>Case Description: </b></label>
+                <br>
+                <label><%= case_descp %></label>
+                <br>
+
+                <label><b>Court Case No.: </b></label>
+                <br>
+                <label><%= court_case_no %></label>
+                <br>
+
+                <label><b>Court Type: </b></label>
+                <br>
+                <label><%= court_type %></label>
+                <br>
+
+                <label><b>Hearing Date: </b></label>
+                <br>
+                <label><%= h_date %></label>
+                <br>
+
+                <button type="submit" class="button">Back</button>
+            </div>
+        </form>
+        <form action="/lawyer/display_lawyer_profile/<%= lawyer_id %>" method="GET"><button type="submit">View Lawyer Details</button></form>
+    </body>
+</html>

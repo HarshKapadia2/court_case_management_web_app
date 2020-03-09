@@ -52,7 +52,6 @@
                         <th>Description</th>
                         <th>Case No</th>
                         <th>Hearing Date</th>
-                        <th>Descision Date</th>
                         <th>Details</th>
                     </tr>
 
@@ -61,16 +60,15 @@
                         (
                             (case1) => 
                             { 
-                                if(case1.isResolved == 'N')
+                                if(case1.isResolved === "N")
                                 { %>
                                     <tr>
                                         <td><%= case1.case_type %></td>
                                         <td><%= case1.case_name %></td>
                                         <td><%= case1.case_descp %></td>
-                                        <td>case no</td>
-                                        <td>hearing date</td>
-                                        <td>decision date</td>
-                                        <td><a href="">View Further Details</a></td>
+                                        <td><%= case1.court_case_no %></td>
+                                        <td><%= case1.h_date %></td>
+                                        <td><form action="/client/display_case_details/<%= case1._id %>" method="GET"><button type="submit">Further Details</button></form></td>
                                     </tr>
                                 <% }
                             }
@@ -90,7 +88,6 @@
                         <th>Description</th>
                         <th>Case No</th>
                         <th>Hearing Date</th>
-                        <th>Descision Date</th>
                         <th>Details</th>
                     </tr>
                     
@@ -99,16 +96,15 @@
                         (
                             (case1) => 
                             { 
-                                if(case1.isResolved == 'Y')
+                                if(case1.isResolved === "Y")
                                 { %>
                                     <tr>
                                         <td><%= case1.case_type %></td>
                                         <td><%= case1.case_name %></td>
                                         <td><%= case1.case_descp %></td>
-                                        <td>case no</td>
-                                        <td>hearing date</td>
-                                        <td>decision date</td>
-                                        <td><a href="">View Further Details</a></td>
+                                        <td><%= case1.court_case_no %></td>
+                                        <td><%= case1.h_date %></td>
+                                        <td><form action="/client/display_case_details/<%= case1._id %>" method="GET"><button type="submit">Further Details</button></form></td>
                                     </tr>
                                 <% }
                             }

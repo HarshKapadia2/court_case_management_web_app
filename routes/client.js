@@ -34,6 +34,33 @@ router.get
     }
 );
 
+//case details
+router.get
+(
+    '/display_case_details/:case_id',
+    ensureAuthenticated,
+    async (req, res) =>
+    {
+        await CaseDetails.find
+        (
+            {
+                _id: ObjectId(req.params.case_id)
+            }
+        ).then
+        (
+            (case_details) =>
+            {
+                const {case_name, case_type, case_descp, lawyer_id, court_case_no, court_type, h_date} = case_details[0];
+
+                res.render('display_case_details', {case_name, case_type, case_descp, lawyer_id, court_case_no, court_type, h_date});
+            }
+        ).catch
+        (
+            (err) => console.log(err)
+        );
+    }
+);
+
 //add case pg 1
 router.get
 (

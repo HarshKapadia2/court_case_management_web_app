@@ -1,3 +1,4 @@
+const {ObjectId} = require('mongodb');
 const express = require('express');
 const router = express.Router();
 
@@ -56,7 +57,7 @@ router.post
         //comma separated preferred case types to arr
         const pref_case_types = req.body.pref_case_types;
         const pref_case_types_arr = pref_case_types.split(",");
-        pref_case_types_arr.forEach((case_type) => case_type.trim());
+        pref_case_types_arr.forEach((case_type) => case_type = case_type.trim());
         
         const new_lawyer_details = new LawyerDetails
         (
@@ -77,9 +78,9 @@ router.post
 
         await new_lawyer_details.save().then
         (
-            (new_lawyer_obj) =>
+            async (new_lawyer_obj) =>
             {
-                User.updateOne
+                await User.updateOne
                 (
                     {
                         _id: req.user._id
@@ -101,6 +102,48 @@ router.post
         (
             (err) => console.log(err)
         );
+    }
+);
+
+//display profile
+router.get
+(
+    '/display_lawyer_profile/:lawyer_id',
+    ensureAuthenticated,
+    async (req, res) =>
+    {
+        await LawyerDetails.find
+        (
+            {
+                lawyer_id: ObjectId(req.params.lawyer_id)
+            }
+        ).then
+        (
+            async (lawyer_details) =>
+            {
+                await User.find
+                (
+                    {
+                        _id: ObjectId(req.params.lawyer_id)
+                    }
+                ).then
+                (
+                    (lawyer_bio) =>
+                    {
+                        const {fname, mname, lname, email} = lawyer_bio[0];
+                        const {company_name, pref_case_types, exp_yrs, experience, fees, fee_descp, dob, age, ph_no} = lawyer_details[0];
+
+                        res.render('display_lawyer_profile', {fname, mname, lname, email, company_name, pref_case_types, exp_yrs, experience, fees, fee_descp, dob, age, ph_no});
+                    }
+                ).catch
+                (
+                    (err) => console.log(err)
+                );
+            }
+        ).catch
+        (
+            (err) => console.log(err)
+        ); 
     }
 );
 

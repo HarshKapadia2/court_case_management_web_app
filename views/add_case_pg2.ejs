@@ -25,20 +25,23 @@
                         <% lawyers.forEach
                         (
                             (lawyer) => 
-                            { %>
-                                <tr>
-                                    <td>
-                                        <label><input required type="radio" name="lawyer_id" value="<%= lawyer._id %>"></label>
-                                    </td>
-                                    <td><%= lawyer.fname %> </td>
-                                    <td>age</td>
-                                    <td>no of cases..</td>
-                                    <td>this is the lawyers experience</td>
-                                    <td>this will be his payment criteria</td>
-                                
-                                    <td><a href="/html/view_lawyer.html">View more</a></td>
-                                </tr>
-                            <% }
+                            {
+                                if(lawyer.is_profile_complete === "Y")
+                                { %>
+                                    <tr>
+                                        <td>
+                                            <label><input required type="radio" name="lawyer_id" value="<%= lawyer._id %>"></label>
+                                        </td>
+                                        <td><%= lawyer.fname %> </td>
+                                        <td>age</td>
+                                        <td>no of cases..</td>
+                                        <td>this is the lawyers experience</td>
+                                        <td>this will be his payment criteria</td>
+                                    
+                                        <td><form action="/lawyer/display_lawyer_profile/<%= lawyer._id %>" method="GET"><button type="submit">More Details</button></form></td>
+                                    </tr>
+                                <% }
+                            }
                         ); %>
                       
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/css/register_profile_style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <center><h2><i class="fa fa-user-plus" style="font-size:32px"> <%= fname %>'s Details</i></h2></center>
+
+        
+
+        <form action="/client/add_case_pg2" method="GET">
+            <div class="container">
+                <label><b>Full Name: </b></label>
+                <br>
+                <label><%= fname %> <%= mname %> <%= lname %></label>
+                <br>
+
+                <label><b>Company Name: </b></label>
+                <br>
+                <label><%= company_name %></label>
+                <br>
+
+                <label><b>Preferred Case Type(s): </b></label>
+                <br>
+                <label>
+                    <%= pref_case_types %>
+                </label>
+                <br>
+
+                <label><b>No. of years of experience: </b></label>
+                <br>
+                <label><%= exp_yrs %></label>
+                <br>
+
+                <label><b>Experience: </b></label>
+                <br>
+                <label><%= experience %></label>
+                <br>
+
+                <label><b>Fees: </b>Rs. <%= fees %></label>
+                <br>
+
+                <label><b>Fee structure: </b></label>
+                <br>
+                <label><%= fee_descp %></label>
+                <br>
+
+                <label><b>Date Of Birth: </b><%= dob %></label>
+                <br>
+
+                <label><b>Age: </b><%= age %> yrs</label>
+                <br>
+
+                <label><b>e-mail: </b></label>
+                <br>
+                <label><%= email %></label>
+                <br>
+
+                <label><b>Phone Number: </b>(+91)(0)<%= ph_no %></label>
+                <br>
+
+                <button type="submit" class="button">Back</button>
+            </div>
+        </form>
+    </body>
+</html>

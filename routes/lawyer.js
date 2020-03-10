@@ -23,7 +23,7 @@ router.get
             await CaseDetails.find
             (
                 {
-                    lawyer_id: req.user.id
+                    lawyer_id: ObjectId(req.user.id)
                 }
             ).then
             (

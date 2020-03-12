@@ -7,9 +7,27 @@ const CaseDetailsSchema = new mongoose.Schema
             type: Object(),
             required: true
         },
+
+
+        isResolved: {
+            type: String,
+            default: "N"
+        },
+
+
         lawyer_id: {
             type: Object()
         },
+        isLawyerAssigned: {
+            type: String,
+            default: "Y"
+        },
+        isCaseAccepted: {
+            type: String,
+            default: "TBD"
+        },
+
+
         court_case_no: {
             type: String
         },
@@ -33,12 +51,6 @@ const CaseDetailsSchema = new mongoose.Schema
         },
         h_date: {
             type: Date
-        },
-
-
-        isResolved: {
-            type: String,
-            default: "N"
         }
     }
 );

@@ -50,9 +50,10 @@ router.get
         (
             (case_details) =>
             {
-                const {case_name, case_type, case_descp, lawyer_id, court_case_no, court_type, h_date} = case_details[0];
+                const user_type = req.user.personType;
+                const {_id, case_name, case_type, case_descp, lawyer_id, court_case_no, court_type, h_date} = case_details[0];
 
-                res.render('display_case_details', {case_name, case_type, case_descp, lawyer_id, court_case_no, court_type, h_date});
+                res.render('display_case_details', {_id, user_type, case_name, case_type, case_descp, lawyer_id, court_case_no, court_type, h_date});
             }
         ).catch
         (

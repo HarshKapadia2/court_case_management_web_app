@@ -70,9 +70,10 @@ app.use
 );
 
 //Routes
-app.use('/', require('./routes/index'));
-app.use('/client', require('./routes/client'));
-app.use('/lawyer', require('./routes/lawyer'));
+app.use('/', require('./routes/index.js'));
+app.use('/client', require('./routes/client.js'));
+app.use('/lawyer', require('./routes/lawyer.js'));
+app.use('/chat', require('./routes/chat.js'));
 
 
 const PORT = process.env.PORT || 5000;
